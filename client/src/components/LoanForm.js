@@ -1,5 +1,7 @@
 // client/src/components/LoanForm.js
 import React, { useState } from 'react';
+import { TableCell, TableContainer, TableHead, TableBody, TableRow, Table, Button, IconButton, Grid, Dialog } from '@mui/material';
+
 
 const LoanForm = ({ token, setLoanTypes }) => {
     const initialFormState = {
@@ -53,56 +55,90 @@ const LoanForm = ({ token, setLoanTypes }) => {
 
 
     return (
-        <div>
-            <h2>Add New Loan</h2>
+        <Grid sx={{ border: "1px light solid" }}>
+
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="loanAmount">Loan Amount:</label>
-                    <input
-                        type="number"
-                        id="loanAmount"
-                        name="loanAmount"
-                        value={formData.loanAmount}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="interestRate">Interest Rate:</label>
-                    <input
-                        type="number"
-                        id="interestRate"
-                        name="interestRate"
-                        value={formData.interestRate}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="loanTerm">Loan Term (months):</label>
-                    <input
-                        type="number"
-                        id="loanTerm"
-                        name="loanTerm"
-                        value={formData.loanTerm}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor="loanType">Loan Type:</label>
-                    <input
-                        type="text"
-                        id="loanType"
-                        name="loanType"
-                        value={formData.loanType}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button type="submit">Submit</button>
+                <h3>Add New Loan</h3>
+                <TableContainer>
+                    <Table stickyHeader
+                        padding="10%"
+
+                        sx={{
+                            borderSpacing: 0,
+                            borderCollapse: 0,
+                        }}>
+                        <TableHead >
+                            <TableRow sx={{ height: "20px" }}>
+                                <TableCell>Loan Term</TableCell>
+                                <TableCell>Loan Amount</TableCell>
+                                <TableCell>interest Rate</TableCell>
+                                <TableCell>Loan Type</TableCell>
+                                <TableCell></TableCell>
+                                <TableCell sx={{ width: "10%" }}>
+                                    actions                        </TableCell>
+                            </TableRow>
+                        </TableHead>
+
+
+                        <TableBody >
+                            <TableRow>
+
+                                <TableCell>
+
+                                    <input
+                                        type="number"
+                                        id="loanTerm"
+                                        name="loanTerm"
+                                        value={formData.loanTerm}
+                                        onChange={handleChange}
+                                        required
+                                    />
+
+                                </TableCell>
+                                <TableCell>
+                                    <input
+                                        type="number"
+                                        id="loanAmount"
+                                        name="loanAmount"
+                                        value={formData.loanAmount}
+                                        onChange={handleChange}
+                                        required
+                                    />
+
+
+
+
+                                </TableCell>
+                                <TableCell>
+
+                                    <input
+                                        type="number"
+                                        id="interestRate"
+                                        name="interestRate"
+                                        value={formData.interestRate}
+                                        onChange={handleChange}
+                                        required
+                                    />
+
+                                </TableCell>
+                                <TableCell><input
+                                    type="text"
+                                    id="loanType"
+                                    name="loanType"
+                                    value={formData.loanType}
+                                    onChange={handleChange}
+                                    required
+                                /></TableCell>
+                                <TableCell></TableCell>
+                                <TableCell sx={{ width: "10%" }}>
+                                    <button type="submit">Submit</button>                     </TableCell>
+
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             </form>
-        </div>
+        </Grid>
     );
 };
 

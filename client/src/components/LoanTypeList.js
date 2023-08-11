@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import EditIcon from '@mui/icons-material/Edit';
-import EditLoanModal from './EditLoanModal';
+import EditLoanModal from './EditLoanModal.tsx';
 
 
 const LoanTypeList = ({ token, setLoanTypes, loanTypes }) => {
@@ -89,7 +89,7 @@ const LoanTypeList = ({ token, setLoanTypes, loanTypes }) => {
 
     return (
 
-        <TableContainer>
+        <TableContainer sx={{ border: "1px dashed" }}>
             <Table
                 stickyHeader
                 padding="10%"
