@@ -25,15 +25,15 @@ let loans = [
 // Create a new loan
 router.post('/loans', authenticateToken, async (req, res) => {
     const { loanAmount, interestRate, loanTerm, loanType } = req.body;
-    const newLoan = {
+    const newCustomer = {
         id: Date.now().toString(),
         loanAmount,
         interestRate,
         loanTerm,
         loanType,
     };
-    loans.push(newLoan);
-    res.status(201).json(newLoan);
+    loans.push(newCustomer);
+    res.status(201).json(newCustomer);
 });
 
 // Get all loans
@@ -68,5 +68,56 @@ router.delete('/loans/:id', authenticateToken, async (req, res) => {
     loans = loans.filter((loan) => loan.id !== loanId);
     res.json({ message: 'Loan deleted successfully' });
 });
+
+
+
+
+// list of customers
+const customers = [
+    { id: 1, name: 'John Doe', email: 'john@example.com' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+    // Add more customer objects here
+];
+
+// API endpoint to get the list of customers
+router.get('/customers', (req, res) => {
+    res.json({ customers });
+});
+
+function generateRepaymentSchedule(loanAmount, interestRate, tenureMonths) {
+    const monthlyPayment = loanAmount / tenureMonths;
+    const repaymentSchedule = [];
+
+    for (let i = 1; i <= tenureMonths; i++) {
+        const paymentDueDate = new Date(); // You would need to calculate actual due dates here
+        const paymentAmount = monthlyPayment;
+        repaymentSchedule.push({ paymentDueDate, paymentAmount });
+    }
+
+    return repaymentSchedule;
+}
+
+router.get('/customers/:id/repayment', (req, res) => {
+    const customerId = parseInt(req.params.id);
+    const customer = customers.find(cust => cust.id === customerId);
+
+    if (!customer) {
+        return res.status(404).json({ error: 'Customer not found' });
+    }
+
+    const loanAmount = 10000; // Example loan amount
+    const interestRate = 0.05; // Example interest rate
+    const tenureMonths = 5; // Example loan tenure in months
+
+    const repaymentSchedule = generateRepaymentSchedule(loanAmount, interestRate, tenureMonths);
+
+    res.json({ customer, repaymentSchedule });
+});
+
+
+
+
+
+
 
 module.exports = router;

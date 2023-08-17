@@ -48,14 +48,14 @@ const Login = ({ setLoggedIn, setToken }) => {
         </Grid>
         <Grid sx={{
             marginInline: "10%",
-            height: "20rem",
+            height: "25rem",
             position: "relative", top: "-55px",
             display: "flex", flexDirection: "row", backgroundColor: "#fff",
             justifyContent: "space-between", border: "1px solid", width: "80%"
         }}>
             <Grid sx={{ width: "65%", }}>
                 <img alt="img."
-                    height={320} width={"100%"}
+                    height={330} width={"100%"}
                     src="https://i0.wp.com/gigoloindiapvt.com/wp-content/uploads/2020/07/csh-login.png" />
             </Grid>
             <Grid sx={{
