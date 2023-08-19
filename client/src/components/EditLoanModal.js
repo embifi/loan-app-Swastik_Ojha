@@ -8,7 +8,7 @@ const EditLoanModal = ({
 }) => {
   const [editLoanData, setEditLoanData] = useState({
     customerID: customerID, repaymentID: repaymentID,
-    loanType: "", loanAmount: "", interestRate: "", loanTerm: ""
+    loanType: "", loanAmount: "", interestRate: "", tenure: ""
   })
   console.log("Edittttttttttttttt", editLoanData)
   const handleEditChange = (event) => {
@@ -70,7 +70,7 @@ const EditLoanModal = ({
             }}
             type="text"
             label="Loan Term "
-            name="loanTerm"
+            name="tenure"
             fullWidth
             placeholder="in months in number(6,12,36)"
             onChange={handleEditChange}

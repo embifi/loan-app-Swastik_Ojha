@@ -19,7 +19,7 @@ const customers = [
         loanType: 'aeroplane',
         loanAmount: 10404,
         interestRate: 3,
-        term: 12,
+        tenure: 12,
         schedules: 895.58,
         totalInterest: 146.91
 
@@ -29,7 +29,7 @@ const customers = [
         loanType: 'Yatch',
         loanAmount: 4000,
         interestRate: 3,
-        term: 18,
+        tenure: 18,
         schedules: 222.94,
         totalInterest: 193
 
@@ -38,7 +38,7 @@ const customers = [
         repaymentID: 22,
         loanType: 'home',
         loanAmount: 150000,
-        term: 10,
+        tenure: 10,
         interestRate: 4,
         schedules: 1519.98,
         totalInterest: 197.7
@@ -101,7 +101,7 @@ router.get('/customers', authenticateToken, async (req, res) => {
   return res.status(200).json(customers);
 });
 
-// update logic
+
 router.post('/customers/:customerId/repayment', authenticateToken, async (req, res) => {
   const customerId = parseInt(req.params.customerId);
   const repaymentData = req.body;
@@ -115,7 +115,7 @@ router.post('/customers/:customerId/repayment', authenticateToken, async (req, r
   delete repaymentData["CustomerID"]
   annualInterestRate = parseInt(repaymentData.loanInterestRate)
   loanAmount = parseInt(repaymentData.loanAmount)
-  loanTermsInMonths = parseInt(repaymentData.loanTerm)
+  loanTermsInMonths = parseInt(repaymentData.tenure)
   const monthlyInterestRate = annualInterestRate / 12 / 100;
   const denominator = 1 - Math.pow(1 + monthlyInterestRate, -loanTermsInMonths);
 
@@ -156,7 +156,7 @@ router.put('/customers/:customerId/repayment/:repaymentId', async (req, res) => 
   // function calculateLoanDetails(loanAmount, annualInterestRate, s) {
   annualInterestRate = parseInt(updatedRepaymentData.interestRate)
   loanAmount = parseInt(updatedRepaymentData.loanAmount)
-  loanTermsInMonths = parseInt(updatedRepaymentData.loanTerm)
+  loanTermsInMonths = parseInt(updatedRepaymentData.tenure)
   const monthlyInterestRate = annualInterestRate / 12 / 100;
   const denominator = 1 - Math.pow(1 + monthlyInterestRate, -loanTermsInMonths);
 

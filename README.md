@@ -1,4 +1,5 @@
 # loan-app-Swastik_Ojha
 
-LOGINID=q@b
-pass =q
+login id pass as a bank admin
+emailID:admin@admin.com
+password:admin

@@ -7,7 +7,7 @@ const CreateNewLoan = ({ createModalOpen, setCreateModalOpen, customerID, token,
         CustomerID: customerID,
 
         loanInterestRate: '',
-        loanTerm: '',
+        tenure: '',
         loanType: '',
         loanAmount: '',
     });
@@ -64,7 +64,7 @@ const CreateNewLoan = ({ createModalOpen, setCreateModalOpen, customerID, token,
                             shrink: true,
                         }}
                         label="Loan Term "
-                        name="loanTerm"
+                        name="tenure"
                         onChange={handleChange}
                         fullWidth
                         placeholder="in months"

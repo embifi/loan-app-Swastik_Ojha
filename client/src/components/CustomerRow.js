@@ -78,7 +78,7 @@ const CustomerRow = ({ token, each, fetchCustomers }) => {
             >
                 <TableCell align="left">{each.name}</TableCell>
                 <TableCell align="center">{each.email}</TableCell>
-                <TableCell align="center">{each._id}</TableCell>
+                <TableCell align="center">{each.id}</TableCell>
                 <TableCell align="right">
                     <IconButton
                         sx={{
@@ -130,7 +130,7 @@ const CustomerRow = ({ token, each, fetchCustomers }) => {
                                                 <TableCell>₹{eachRepayment?.interestRate}</TableCell>
 
                                                 <TableCell>₹{eachRepayment?.totalInterest}</TableCell>
-                                                <TableCell align="center">{eachRepayment?.loanTerm}</TableCell>
+                                                <TableCell align="center">{eachRepayment?.tenure}</TableCell>
 
                                                 <TableCell>
                                                     <IconButton title="Delete">
