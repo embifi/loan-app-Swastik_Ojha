@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Login from './components/Login';
-import LoanForm from './components/LoanForm';
+
 import LoanTypeList from './components/LoanTypeList';
 
 function App() {
@@ -12,10 +12,8 @@ function App() {
     <div>
       {!isLoggedIn ? (
         <Login setLoggedIn={setLoggedIn} setToken={setToken} />
-      ) : (
-        <LoanForm token={token} setLoanTypes={setLoanTypes} />
-      )}
-      {isLoggedIn && <LoanTypeList loanTypes={loanTypes} token={token} setLoanTypes={setLoanTypes} />}
+      ) :
+        isLoggedIn && <LoanTypeList loanTypes={loanTypes} token={token} setLoanTypes={setLoanTypes} />}
     </div>
   );
 }
