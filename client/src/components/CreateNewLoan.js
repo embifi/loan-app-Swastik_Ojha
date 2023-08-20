@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal, TextField, Button, } from "@mui/material";
 
 const CreateNewLoan = ({ createModalOpen, setCreateModalOpen, customerID, token, fetchCustomers }) => {
-    console.log("customerID:", customerID)
+
     const [formData, setFormData] = useState({
         CustomerID: customerID,
 
@@ -20,6 +20,7 @@ const CreateNewLoan = ({ createModalOpen, setCreateModalOpen, customerID, token,
     };
     const handleSubmit = (event) => {
         event.preventDefault();
+
         fetch(`http://localhost:6969/api/customers/${customerID}/repayment`, {
             method: 'POST',
             headers: {
@@ -37,7 +38,7 @@ const CreateNewLoan = ({ createModalOpen, setCreateModalOpen, customerID, token,
             .catch((error) => console.error('Error updating loan:', error));
 
 
-        console.log('Form Data:', formData);
+
 
     };
     return (
@@ -46,6 +47,18 @@ const CreateNewLoan = ({ createModalOpen, setCreateModalOpen, customerID, token,
                 <form onSubmit={handleSubmit}>
                     <h2>Create Loans</h2>
 
+                    <TextField
+                        sx={{ paddingBlock: 2 }}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        type='date'
+                        label="Start date"
+                        name='startDate'
+                        onChange={handleChange}
+                        fullWidth
+
+                    />
                     <TextField
                         sx={{ paddingBlock: 2 }}
                         InputLabelProps={{

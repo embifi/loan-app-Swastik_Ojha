@@ -6,7 +6,7 @@ const repaymentSchema = new mongoose.Schema({
     loanAmount: Number,
     interestRate: Number,
     term: Number,
-    schedules: Number,
+    schedules: [],
     totalInterest: Number,
 });
 
